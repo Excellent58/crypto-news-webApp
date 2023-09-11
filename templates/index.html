@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./static/dist/css/output.css"/>
+</head>
+<body class="">
+
+    <div class="flex flex-col relative bg-background items-center min-h-screen">
+        <h1 class="text-6xl text-primary font-bold mt-20">
+            Crypto News <span class="text-active">App</span>
+        </h1>
+        <h2 class="text-active text-2xl mt-6">
+            Next.js app which provides information latest news about Crypto using
+            Cryptocurrency API
+        </h2>
+    
+        <div class="mt-12 sm:mx-auto justify-center sm:w-full sm:flex">
+            <div class="mt-4 sm:mt-0 sm:ml-3">
+                <button
+                    class="block w-full rounded-md px-5 py-3 bg-active text-base font-bold text-background focus:outline-none focus:ring-2 focus:ring-primary sm:px-10"
+                >
+                    Get Latest News
+                </button>
+            </div>
+        </div>
+
+        {{if .}}
+            {{range .}}
+                <div class="mt-10 grid grid-cols-2 gap-16 max-w-5xl">
+                    <div class="mt-10 grid justify-items-center">
+                        <img src={{ .RelatedImageBig }} width="300" height="300" class="rounded-lg" alt="new img"></img>
+                
+                        <a class="text-primary text-center hover:text-active transition-colors duation-200"
+                            href={{ .NewsLink }}>
+                            <h3 class="mt-10 text-2xl">{{ .HEADLINE }}</h3>
+                            <p class="mt-4 text-center text-lg opacity-60">
+                                {{ .NewsProviderName }}
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            {{ end }}
+
+            <div class="flex flex-col mt-10 justify-center">
+                <button class="block text-active text-base font-bold">
+                    next page &rarr;
+                </button>
+            </div>
+        {{ end }}
+    </div>
+</body>
+</html>
